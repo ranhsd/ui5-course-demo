@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: ui5.demo.ui5demo
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: http://52.1.153.106:8000
+          client: "001"
+        app:
+          name: ZRANH_UI5_APP
+          description: SAP UI5 Demo app
+          package: $TMP
+          transport:
+        exclude:
+          - /test/

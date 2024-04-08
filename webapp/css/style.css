@@ -1,0 +1,25 @@
+/* Enter your custom styles here */
+
+
+.full-width {
+    width: 100%;
+}
+
+.full-height {
+    width: 100%;
+}
+
+.margin-xl {
+    margin: 30px;
+}
+
+
+/* AVOID COLOR CSS CLASSES */
+.button-color {
+    background-color: #454524 !important;
+}
+
+/* AVOID OVERRIDE DEFAULT SAPUI5 CLASSES! */
+.sapMUiButton {
+    color: yellow !important;
+}

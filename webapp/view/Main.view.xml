@@ -1,0 +1,110 @@
+<mvc:View
+    controllerName="ui5.demo.ui5demo.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
+        <Table
+            alternateRowColors="true"
+            inset="true"
+            visible="false"
+            backgroundDesign="Solid"
+            items="{viewModel>/tableItems}"
+        >
+            <headerToolbar>
+                <OverflowToolbar>
+                    <Title
+                        text="Users"
+                        level="H2"
+                    />
+                    <ToolbarSpacer />
+                    <Button
+                        text="Add User"
+                        press="onAddUser"
+                    />
+                </OverflowToolbar>
+            </headerToolbar>
+            <columns>
+                <Column>
+                    <Text text="{i18n>firstName}" />
+                </Column>
+                <Column>
+                    <Text text="{i18n>lastName}" />
+                </Column>
+                <Column>
+                    <Text text="{i18n>hometown}" />
+                </Column>
+                <Column>
+                    <Text text="{i18n>actions}" />
+                </Column>
+            </columns>
+            <!-- Template -->
+            <ColumnListItem vAlign="Middle">
+                <cells>
+                    <Text text="{viewModel>firstName}" />
+                    <Text text="{viewModel>lastName}" />
+                    <Input value="{viewModel>hometown}" />
+                    <HBox>
+                        <!-- <Button
+                            text="Update"
+                            class="sapUiSmallMarginBeginEnd"
+                        /> -->
+                        <Button
+                            icon="sap-icon://delete"
+                            type="Critical"
+                            press="onDeleteUser"
+                        />
+                    </HBox>
+                </cells>
+            </ColumnListItem>
+        </Table>
+
+        <Table
+            alternateRowColors="true"
+            inset="true"
+            backgroundDesign="Solid"
+            items="{
+                path: '/Products'
+            }"
+        >
+            <columns>
+                <Column>
+                    <Text text="ID" />
+                </Column>
+                <Column>
+                    <Text text="Name" />
+                </Column>
+                <Column>
+                    <Text text="Description" />
+                </Column>
+                <Column>
+                    <Text text="Price / Rating" />
+                </Column>
+            </columns>
+            <ColumnListItem>
+                <cells>
+                    <Text text="{ID}" />
+                    <Text text="{Name}" />
+                    <Text text="{Description}" />
+                    <!-- <Text text="{Price} / {Rating}" /> -->
+                    <ObjectNumber
+                        number="{
+						parts:[{path:'Price'}],
+						type: 'sap.ui.model.type.Currency',
+						formatOptions: {showMeasure: true}
+					}"
+                        unit="USD"
+                        state="Success"
+                        inverted="true"
+                    />
+                    <!-- <Text text="{= ${Price} }">  -->
+                </cells>
+            </ColumnListItem>
+        </Table>
+    </Page>
+</mvc:View>
