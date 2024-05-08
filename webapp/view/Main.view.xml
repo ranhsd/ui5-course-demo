@@ -15,6 +15,7 @@
             visible="false"
             backgroundDesign="Solid"
             items="{viewModel>/tableItems}"
+            id="table"
         >
             <headerToolbar>
                 <OverflowToolbar>
@@ -69,30 +70,40 @@
             inset="true"
             backgroundDesign="Solid"
             items="{
-                path: '/Products'
+                path: '/UserSet'
             }"
+            mode="SingleSelectMaster"
+            selectionChange=".onTableSelectionChange"
         >
             <columns>
                 <Column>
                     <Text text="ID" />
                 </Column>
-                <Column>
-                    <Text text="Name" />
+                <Column
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text text="First Name" />
+                </Column>
+                <Column
+                    minScreenWidth="Desktop"
+                    demandPopin="true"
+                >
+                    <Text text="Last Name" />
                 </Column>
                 <Column>
-                    <Text text="Description" />
-                </Column>
-                <Column>
-                    <Text text="Price / Rating" />
+                    <Text text="Birthdate" />
                 </Column>
             </columns>
             <ColumnListItem>
                 <cells>
-                    <Text text="{ID}" />
-                    <Text text="{Name}" />
-                    <Text text="{Description}" />
+                    <Text text="{id}" />
+                    <Text text="{firstName}" />
+                    <Text text="{lastName}" />
+                    <Text text="10.5.1982" />
+                    <!-- <Text text="{Description}" /> -->
                     <!-- <Text text="{Price} / {Rating}" /> -->
-                    <ObjectNumber
+                    <!-- <ObjectNumber
                         number="{
 						parts:[{path:'Price'}],
 						type: 'sap.ui.model.type.Currency',
@@ -101,7 +112,7 @@
                         unit="USD"
                         state="Success"
                         inverted="true"
-                    />
+                    /> -->
                     <!-- <Text text="{= ${Price} }">  -->
                 </cells>
             </ColumnListItem>

@@ -17,7 +17,7 @@
     },
     "dataSources": {
       "mainService": {
-        "uri": "/OData/OData.svc",
+        "uri": "/sap/opu/odata/sap/ZRANH_ODATA_DEMO_SRV",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -86,12 +86,11 @@
     },
     "routing": {
       "config": {
-        "routerClass": "sap.m.routing.Router",
+        "routerClass": "sap.f.routing.Router",
         "viewType": "XML",
         "async": true,
         "viewPath": "ui5.demo.ui5demo.view",
-        "controlAggregation": "pages",
-        "controlId": "app",
+        "controlId": "layout",
         "clearControlAggregation": false
       },
       "routes": [
@@ -101,15 +100,30 @@
           "target": [
             "TargetMain"
           ]
+        },
+        {
+          "name": "RouteDetail",
+          "pattern": "detail/{id}",
+          "target": [
+            "TargetMain",
+            "TargetDetail"
+          ]
         }
       ],
       "targets": {
         "TargetMain": {
           "viewType": "XML",
           "transition": "slide",
-          "clearControlAggregation": false,
+          "controlAggregation": "beginColumnPages",
           "viewId": "Main",
           "viewName": "Main"
+        },
+        "TargetDetail": {
+          "viewType": "XML",
+          "transition": "slide",
+          "controlAggregation": "midColumnPages",
+          "viewId": "DetailPage",
+          "viewName": "Detail"
         }
       }
     },

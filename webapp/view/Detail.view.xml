@@ -1,0 +1,17 @@
+<mvc:View
+    controllerName="ui5.demo.ui5demo.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Page
+        id="DetailPage"
+        title="{i18n>title}"
+    >
+        <Text
+            id="currentId"
+            text="Detail page"
+        />
+    </Page>
+</mvc:View>

@@ -1,7 +1,15 @@
-<mvc:View controllerName="ui5.demo.ui5demo.controller.App"
+<mvc:View
+    controllerName="ui5.demo.ui5demo.controller.App"
     xmlns:html="http://www.w3.org/1999/xhtml"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
-    <App id="app">
-    </App>
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.f"
+    height="100%"
+>
+    <FlexibleColumnLayout
+        id="layout"
+        backgroundDesign="Translucent"
+        autoFocus="false"
+        layout="{layoutModel>/layout}"
+    />
 </mvc:View>

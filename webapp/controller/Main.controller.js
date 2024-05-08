@@ -4,15 +4,21 @@ sap.ui.define(
     "sap/ui/model/json/JSONModel",
     "sap/m/Page",
     "sap/m/Button",
+    "sap/f/LayoutType",
   ],
   /**
    * @param {typeof sap.ui.core.mvc.Controller} Controller
    */
-  function (Controller, JSONModel, Page, Button) {
+  function (Controller, JSONModel, Page, Button, LayoutType) {
     "use strict";
 
     return Controller.extend("ui5.demo.ui5demo.controller.Main", {
       onInit: function () {
+        this.getOwnerComponent()
+          .getRouter()
+          .getRoute("RouteDetail")
+          .attachPatternMatched(this.onRouteDetailMatched, this);
+
         var oViewModel = new JSONModel({
           isButtonVisible: false,
           tableItems: [
@@ -38,6 +44,10 @@ sap.ui.define(
 
         // default model
         const oDataModel = this.getOwnerComponent().getModel();
+      },
+      onRouteDetailMatched: function (oEvent) {
+        const oArgs = oEvent.getParameter("arguments");
+        const oTable = this.getView().byId("table");
       },
       onAddUser: function (oEvent) {
         const oViewModel = this.getOwnerComponent().getModel("viewModel");
@@ -79,6 +89,28 @@ sap.ui.define(
        * @memberOf example_two.one
        */
       onExit: function () {},
+
+      onTableSelectionChange: function (oEvent) {
+        const oListItemObject = oEvent
+          .getParameter("listItem")
+          .getBindingContext()
+          .getObject();
+
+        // const sPath = oEvent.getParameter("listItem").getBindingContextPath();
+        // const listItemObject = this.getOwnerComponent()
+        //   .getModel()
+        //   .getProperty(sPath);
+
+        // alert(oListItemObject.id);
+
+        // const oLayoutModel = this.getOwnerComponent().getModel("layoutModel");
+        // oLayoutModel.setProperty("/layout", LayoutType.TwoColumnsMidExpanded);
+
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("RouteDetail", {
+          id: oListItemObject.id,
+        });
+      },
 
       onShowTitleButtonPressed: function (oEvent) {
         const isShown = this.getOwnerComponent()
