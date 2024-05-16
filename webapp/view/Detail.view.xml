@@ -9,9 +9,96 @@
         id="DetailPage"
         title="{i18n>title}"
     >
-        <Text
-            id="currentId"
-            text="Detail page"
-        />
+        <Table
+            id="userAddressTable"
+            alternateRowColors="true"
+            inset="true"
+            backgroundDesign="Solid"
+            mode="SingleSelectMaster"
+            selectionChange=".onTableSelectionChange"
+            items="{addresses}"
+        >
+            <headerToolbar>
+                <OverflowToolbar design="Solid">
+                    <!-- <HBox
+                        width="100%"
+                        justifyContent="Start"
+                        alignItems="Center"
+                    >
+                        <Text text="Test" />
+                        <Button
+                            text="Create"
+                            icon="sap-icon://add"
+                        />
+                        <Button
+                            text="Create"
+                            icon="sap-icon://add"
+                        />
+                        <Button
+                            text="Create"
+                            icon="sap-icon://add"
+                        />
+                    </HBox> -->
+                    <Button
+                        text="Create"
+                        icon="sap-icon://add"
+                        type="Emphasized"
+                        press=".onCreateUserAddress"
+                    />
+                    <!-- <ToolbarSpacer />
+                    <Button
+                        text="Create"
+                        icon="sap-icon://add"
+                    />
+                    <ToolbarSpacer />
+                    <Button
+                        text="Create"
+                        icon="sap-icon://add"
+                    /> -->
+                </OverflowToolbar>
+            </headerToolbar>
+            <columns>
+                <Column>
+                    <Text text="ID" />
+                </Column>
+                <Column
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text text="Address Type" />
+                </Column>
+                <Column
+                    minScreenWidth="Desktop"
+                    demandPopin="true"
+                >
+                    <Text text="Street" />
+                </Column>
+
+                <Column>
+                    <Text text="City" />
+                </Column>
+                <Column>
+                    <Text text="Country" />
+                </Column>
+                <Column>
+                    <Text text="Actions" />
+                </Column>
+            </columns>
+            <ColumnListItem>
+                <cells>
+                    <Text text="{id}" />
+                    <Text text="{addressType}" />
+                    <Text text="{address}" />
+                    <Text text="{city}" />
+                    <Text text="{country}" />
+                    <HBox>
+                        <Button
+                            icon="sap-icon://delete"
+                            press="onDeleteUserAddress"
+                        />
+                    </HBox>
+                </cells>
+            </ColumnListItem>
+        </Table>
     </Page>
 </mvc:View>

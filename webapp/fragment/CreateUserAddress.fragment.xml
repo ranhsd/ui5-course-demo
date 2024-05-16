@@ -1,0 +1,89 @@
+<core:FragmentDefinition
+    xmlns:f="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Dialog
+        title="{i18n>createNewAddress}"
+        afterClose="onDialogClose"
+        busy="{/busy}"
+    >
+        <f:SimpleForm
+            id="userAddressForm"
+            editable="true"
+            layout="ResponsiveGridLayout"
+            labelSpanXL="4"
+            labelSpanL="3"
+            labelSpanM="4"
+            labelSpanS="12"
+            adjustLabelSpan="false"
+            emptySpanXL="0"
+            emptySpanL="4"
+            emptySpanM="0"
+            emptySpanS="0"
+            columnsXL="2"
+            columnsL="1"
+            columnsM="1"
+            singleContainerFullSize="false"
+        >
+            <f:content>
+                <Label text="Type" />
+                <ComboBox
+                    value="{/userAddress/addressType}"
+                    items="{addressTypes>/}"
+                >
+                    <core:Item
+                        key="{addressTypes>key}"
+                        text="{addressTypes>text}"
+                    />
+                </ComboBox>
+                <Label text="Street" />
+                <Input value="{/userAddress/address}" />
+                <Label text="City" />
+                <Input value="{/userAddress/city}" />
+                <Label text="Country" />
+                <Input value="{/userAddress/country}" />
+            </f:content>
+        </f:SimpleForm>
+        <!-- <HBox
+            justifyContent="Center"
+            width="100%"
+        >
+            <VBox>
+                <Input width="100%" />
+                <Input width="100%" />
+                <Input width="100%" />
+                <Input width="100%" />
+            </VBox>
+        </HBox> -->
+
+        <!-- <buttons>
+            <Button text="bt1" />
+            <Button text="bt2" />
+            <Button text="bt3" />
+        </buttons> -->
+        <beginButton>
+            <Button
+                text="Cancel"
+                icon="sap-icon://cancel"
+                press="onCloseUserAddressDialog"
+            />
+        </beginButton>
+
+        <endButton>
+            <Button
+                text="Save"
+                icon="sap-icon://save"
+                type="Emphasized"
+                press="onSaveUserAddress"
+            />
+        </endButton>
+        <!-- <footer>
+            <OverflowToolbar>
+                <Button text="bt1" />
+                <ToolbarSpacer />
+                <Button text="bt2" />
+            </OverflowToolbar>
+        </footer> -->
+    </Dialog>
+</core:FragmentDefinition>

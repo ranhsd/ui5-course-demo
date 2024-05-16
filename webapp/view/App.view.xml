@@ -6,6 +6,7 @@
     xmlns="sap.f"
     height="100%"
 >
+    <!-- <App></App> -->
     <FlexibleColumnLayout
         id="layout"
         backgroundDesign="Translucent"
